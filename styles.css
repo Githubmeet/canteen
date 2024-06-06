@@ -1,0 +1,80 @@
+/* styles.css */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+h1 {
+    color: #343a40;
+}
+
+h2 {
+    color: #007bff;
+}
+
+.card {
+    margin-top: 20px;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color:  #007bff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #007bff;
+    color: white;
+}
+
+footer p {
+    margin: 0;
+}
+
+.card-img-top {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-img-top:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-fluid {
+    max-height: 200px;
+    object-fit: cover;
+}

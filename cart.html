@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .table-rounded {
+            border-radius: 10px;
+        }
+
+        .table-header {
+            background-color: #f8f9fa;
+        }
+
+        .remove-btn {
+            border: none;
+            background: none;
+            color: red;
+            cursor: pointer;
+        }
+        .cart-item-img {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+        }
+        .table-responsive-scroll {
+            overflow-x: auto;
+        }    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Food Post</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="text-center">Your Cart</h1>
+        <div class="table-responsive-scroll">
+            <table class="table mt-4 table-rounded">
+                <thead class="table-header">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="mysore.png" alt="Mysore Dosa" class="cart-item-img mr-3">
+                                Mysore Masala Dosa
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control quantity" value="1" min="1">
+                        </td>
+                        <td class="price">₹199</td>
+                        <td class="total">₹199</td>
+                        <td><button class="remove-btn">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="gini dhosa.jpg" alt="Jini Dosa" class="cart-item-img mr-3">
+                                Jini Dosa
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control quantity" value="1" min="1">
+                        </td>
+                        <td class="price">₹199</td>
+                        <td class="total">₹199</td>
+                        <td><button class="remove-btn">Remove</button></td>
+                    </tr>
+                    <!-- Add more items here -->
+                </tbody>
+            </table>
+            </div>
+            <div class="text-right mt-4">
+                <h4>Total: <span id="cart-total">₹398</span></h4>
+            </div>
+            <div class="text-center mt-4">
+                <a href="payment.html" class="btn btn-primary">Proceed to Checkout</a>
+            </div>
+        </div>
+        <!-- <footer class="bg-primary text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Canteen Management System. All Rights Reserved.</p>
+    </footer> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Update total price on quantity change
+            $('.quantity').on('input', function(){
+                var quantity = parseInt($(this).val());
+                var price = parseFloat($(this).closest('tr').find('.price').text().replace('₹', ''));
+                var total = quantity * price;
+                $(this).closest('tr').find('.total').text('₹' + total.toFixed(2));
+                updateTotalPrice();
+            });
+
+            // Update total price function
+            function updateTotalPrice() {
+                var totalPrice = 0;
+                $('.total').each(function(){
+                    totalPrice += parseFloat($(this).text().replace('₹', ''));
+                });
+                $('#cart-total').text('₹' + totalPrice.toFixed(2));
+            }
+
+            // Remove item from cart
+            $('.remove-btn').on('click', function(){
+                $(this).closest('tr').remove();
+                updateTotalPrice();
+            });
+        });
+    </script>
+
+</body>
+</html>
